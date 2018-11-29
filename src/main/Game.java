@@ -7,11 +7,10 @@ import processing.core.*;
 
 public class Game extends PApplet
 {
-	int[][] grid;
-	ArrayList<Piece> pieces;
-	Piece current;
-	Random rand;
-	boolean paused = false;
+	private int[][] grid;
+	private ArrayList<Piece> pieces;
+	private Random rand;
+	private boolean paused = false;
 	
 	//set the size
 	public void settings()
@@ -139,17 +138,17 @@ public class Game extends PApplet
 			//make an array to store all the individual blocks to be deleted
 			ArrayList<Block> toRemove = new ArrayList<>();
 			
-			for(Block b : p.blocks)
+			for(Block b : p.getBlocks())
 			{
 				//if the block is in the full row, add it to the trash pile
-				if(b.y == y)
+				if(b.getY() == y)
 					toRemove.add(b);
 			}
 			//after all blocks have been added, delete them
-			p.blocks.removeAll(toRemove);
+			p.getBlocks().removeAll(toRemove);
 			
 			//if the piece has no blocks left in its list, add it to the trash pile
-			if(p.blocks.isEmpty())
+			if(p.getBlocks().isEmpty())
 			{
 				emptyPieces.add(p);
 			}
@@ -170,9 +169,9 @@ public class Game extends PApplet
 		//go through all the blocks in every piece and mark it on the grid
 		for(Piece p : pieces)
 		{
-			for(Block b : p.blocks)
+			for(Block b : p.getBlocks())
 			{
-				newGrid[b.x][b.y] = 1;
+				newGrid[b.getX()][b.getY()] = 1;
 			}
 		}
 		//return the new grid
@@ -185,12 +184,12 @@ public class Game extends PApplet
 		//sort through all the pieces
 		for(Piece p : pieces)
 		{
-			for(Block b : p.blocks)
+			for(Block b : p.getBlocks())
 			{
 				//the block has to be above the deleted row to be moved down
-				if(b.y < y)
+				if(b.getY() < y)
 				{
-					b.y += 1;
+					b.setY(b.getY() + 1);
 				}
 			}
 		}

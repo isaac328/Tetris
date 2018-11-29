@@ -4,10 +4,10 @@ import processing.core.*;
 
 public class Block
 {
-	float blockSize = 50;
-	PApplet p;
-	int x;
-	int y;
+	private float blockSize = 50;
+	private PApplet p;
+	private int x;
+	private int y;
 	
 	public Block(PApplet p, int x, int y)
 	{
@@ -20,9 +20,12 @@ public class Block
 	{
 		p.rect(x*50, y*50, blockSize, blockSize);
 	}
-	
-	public void update()
-	{
-		
-	}
+
+	public void setX(int x){ this.x = x; }
+
+	public void setY(int y){ this.y = y; }
+
+	public int getX(){ return this.x; }
+
+	public int getY(){ return this.y; }
 }
