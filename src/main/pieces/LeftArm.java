@@ -18,6 +18,7 @@ public class LeftArm extends Piece {
 		blocks.add(new Block(p, 4, 1));
 		blocks.add(new Block(p, 5, 1));
 		blocks.add(new Block(p, 5, 2));
+		position = ArmPosition.UPRIGHT;
 	}
 
 

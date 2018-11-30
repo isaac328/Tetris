@@ -17,6 +17,7 @@ public class RightArm extends Piece {
 		blocks.add(new Block(p, 4, 1));
 		blocks.add(new Block(p, 3, 1));
 		blocks.add(new Block(p, 3, 2));
+		position = ArmPosition.UPRIGHT;
 	}
 
 	@Override

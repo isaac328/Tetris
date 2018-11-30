@@ -17,6 +17,7 @@ public class Line extends Piece {
 		{
 			blocks.add(new Block(p, 4, y));
 		}
+		position = LinePosition.UPRIGHT;
 	}
 
 	@Override

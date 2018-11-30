@@ -17,6 +17,7 @@ public class TPiece extends Piece {
 		blocks.add(new Block(p, 3, 1));
 		blocks.add(new Block(p, 4, 1));
 		blocks.add(new Block(p, 5, 1));
+		position = TPosition.POINTING_UP;
 	}
 
 	@Override

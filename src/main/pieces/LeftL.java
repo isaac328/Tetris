@@ -17,6 +17,7 @@ public class LeftL extends Piece {
 		blocks.add(new Block(p, 4, 1));
 		blocks.add(new Block(p, 4, 2));
 		blocks.add(new Block(p, 5, 2));
+		position = LPosition.POINTING_UP;
 	}
 
 	@Override

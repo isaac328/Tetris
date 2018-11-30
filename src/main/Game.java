@@ -3,14 +3,15 @@ package main;
 import java.util.ArrayList;
 import java.util.Random;
 
+import main.factory.PieceFactory;
 import processing.core.*;
 
 public class Game extends PApplet
 {
 	private int[][] grid;
 	private ArrayList<Piece> pieces;
-	private Random rand;
 	private boolean paused = false;
+	private PieceFactory factory;
 	
 	//set the size
 	public void settings()
@@ -22,7 +23,7 @@ public class Game extends PApplet
 	public void setup()
 	{
 		colorMode(HSB);
-		rand = new Random();
+		factory = PieceFactory.getFactory();
 		pieces = new ArrayList<>();
 		newPiece();
 		grid = new int[width/50][height/50];
@@ -83,7 +84,8 @@ public class Game extends PApplet
 	//create new piece and add it to the top of the list
 	public void newPiece()
 	{
-		pieces.add(0, new Piece(this));	
+		pieces.add(0, factory.makePiece(this));
+		factory = PieceFactory.getFactory();
 	}
 	
 	//if the user presses a key
