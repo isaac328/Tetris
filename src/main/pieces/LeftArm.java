@@ -11,7 +11,7 @@ public class LeftArm extends Piece {
 
 	ArmPosition position;
 
-	public LeftArm(PApplet p){
+	public LeftArm(PApplet p) throws Exception{
 		super(p);
 		ArrayList<Block> blocks = getBlocks();
 		blocks.add(new Block(p, 4, 0));

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Line extends Piece {
 	LinePosition position;
 
-	public Line(PApplet p){
+	public Line(PApplet p) throws Exception{
 		super(p);
 		ArrayList<Block> blocks = getBlocks();
 		for(int y = 0; y < 4; y++)
@@ -35,7 +35,7 @@ public class Line extends Piece {
 			//get the x position of one block(they're all the same)
 			int x = blocks.get(0).getX();
 			//make sure x is far enough away from the left wall and the right is clear
-			if(x < 2 && rightClear())
+			if(x < 2 && rightRotateClear())
 			{
 				//rotate blocks
 				blocks.get(0).setX(3);
@@ -48,7 +48,7 @@ public class Line extends Piece {
 				position = LinePosition.FLAT;
 			}
 			//make sure x is far enough away from right wall and the left side is clear
-			else if(x > 7 && leftClear())
+			else if(x > 7 && leftRotateClear())
 			{
 				//rotate blocks
 				blocks.get(0).setX(9);
@@ -61,7 +61,7 @@ public class Line extends Piece {
 				position = LinePosition.FLAT;
 			}
 			//if its in the middle, just make sure right and left is clear
-			else if(rightClear() && leftClear())
+			else if(rightRotateClear() && leftRotateClear())
 			{
 				//rotate blocks
 				blocks.get(0).setX(blocks.get(0).getX() + 1);
@@ -86,5 +86,27 @@ public class Line extends Piece {
 			blocks.get(3).setY(blocks.get(3).getY() + 2);
 			position = LinePosition.UPRIGHT;
 		}
+	}
+
+	//this leftClear checks only for other blocks, used for rotating
+	private boolean leftRotateClear()
+	{
+		for(Block b : getBlocks())
+		{
+			if(getGrid()[b.getX() - 1][b.getY()] != 0 || getGrid()[b.getX() - 2][b.getY()] != 0)
+				return false;
+		}
+		return true;
+	}
+
+	//this rightClear checks only for blocks, used for rotation.
+	private boolean rightRotateClear()
+	{
+		for(Block b : getBlocks())
+		{
+			if(getGrid()[b.getX() + 1][b.getY()] != 0 || getGrid()[b.getX() + 2][b.getY()] != 0)
+				return false;
+		}
+		return true;
 	}
 }

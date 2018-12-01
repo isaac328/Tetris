@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class LeftL extends Piece {
 	LPosition position;
 
-	public LeftL(PApplet p){
+	public LeftL(PApplet p) throws Exception{
 		super(p);
 		ArrayList<Block> blocks = getBlocks();
 		blocks.add(new Block(p, 4, 0));

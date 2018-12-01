@@ -6,7 +6,7 @@ import processing.core.PApplet;
 import java.util.Random;
 
 public abstract class PieceFactory {
-	public abstract Piece makePiece(PApplet p);
+	public abstract Piece makePiece(PApplet p) throws Exception;
 
 	public static PieceFactory getFactory(){
 		Random rand = new Random();

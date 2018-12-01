@@ -1,7 +1,6 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import main.factory.PieceFactory;
 import processing.core.*;
@@ -12,20 +11,38 @@ public class Game extends PApplet
 	private ArrayList<Piece> pieces;
 	private boolean paused = false;
 	private PieceFactory factory;
+
+	public Game(){
+		super();
+		grid = new int[500/50][800/50];
+		for(int x = 0; x < grid.length; x++)
+		{
+			for(int y = 0; y < grid[x].length; y++)
+			{
+				grid[x][y] = 0;
+			}
+		}
+	}
+
 	
 	//set the size
+	@Override
 	public void settings()
 	{
 		size(500, 800);
 	}
 	
 	//set color mode, create instances, create first piece, initialize grid with all 0
+	@Override
 	public void setup()
 	{
 		colorMode(HSB);
 		factory = PieceFactory.getFactory();
 		pieces = new ArrayList<>();
-		newPiece();
+		try{
+			newPiece();
+		}
+		catch (Exception ex){ System.out.println(ex.getMessage());}
 		grid = new int[width/50][height/50];
 		for(int x = 0; x < grid.length; x++)
 		{
@@ -37,6 +54,7 @@ public class Game extends PApplet
 	}
 	
 	//this method loops, everything in this method is executed every frame
+	@Override
 	public void draw()
 	{
 		//set background to black
@@ -49,12 +67,15 @@ public class Game extends PApplet
 		//if not paused, move the blocks down
 		if(paused == false)
 		{
-			moveDown(50);
+			try{
+				moveDown(50);
+			}
+			catch (Exception ex){ System.out.println(ex.getMessage());}
 		}
 	}
 	
 	//moves the falling blocks down every specified time frame
-	public void moveDown(int time)
+	public void moveDown(int time) throws Exception
 	{
 		//make sure theres nothing under the piece
 		if(pieces.get(0).check(grid))
@@ -82,7 +103,7 @@ public class Game extends PApplet
 	}
 	
 	//create new piece and add it to the top of the list
-	public void newPiece()
+	public void newPiece() throws Exception
 	{
 		pieces.add(0, factory.makePiece(this));
 		factory = PieceFactory.getFactory();
@@ -179,6 +200,8 @@ public class Game extends PApplet
 		//return the new grid
 		return newGrid;
 	}
+
+	public int[][] getGrid(){ return this.grid; }
 	
 	//moves all the pieces down after a full row
 	public void moveAll(int y)

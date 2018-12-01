@@ -6,7 +6,7 @@ import processing.core.PApplet;
 
 public class RightArmFactory extends PieceFactory {
 	@Override
-	public Piece makePiece(PApplet p) {
+	public Piece makePiece(PApplet p) throws Exception {
 		return new RightArm(p);
 	}
 }

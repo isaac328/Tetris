@@ -7,14 +7,14 @@ public abstract class Piece
 {
 	private ArrayList<Block> blocks;
 	private PApplet p;
-	private int[][] grid;
-
 
 	public abstract void setColor();
 	public abstract void rotate();
 	
-	public Piece(PApplet p)
+	public Piece(PApplet p) throws Exception
 	{
+		if(p == null)
+			throw new Exception("PApplet cannot be null");
 		blocks = new ArrayList<>(4);
 		this.p = p;
 	}
@@ -23,7 +23,7 @@ public abstract class Piece
 
 	public ArrayList<Block> getBlocks(){ return this.blocks; }
 
-	public int[][] getGrid(){ return this.grid; }
+	public int[][] getGrid(){ return ((Game)p).getGrid(); }
 	
 	public void show()
 	{
@@ -67,9 +67,6 @@ public abstract class Piece
 	//this method is used for controls (left right etc).
 	public void checkMove(int[][] grid) 
 	{
-		//update the grid
-		this.grid = grid;
-		
 		//if a key is pressed
 		if(p.keyPressed)
 		{	
@@ -128,17 +125,7 @@ public abstract class Piece
 		}
 		return true;
 	}
-	
-	//this leftClear checks only for other blocks, used for rotating
-	public boolean leftClear()
-	{
-		for(Block b : blocks)
-		{
-			if(grid[b.getX() - 1][b.getY()] != 0 || grid[b.getX() - 2][b.getY()] != 0)
-				return false;
-		}
-		return true;
-	}
+
 	//this RightClear checks for blocks and walls, used for moving right
 	public boolean rightClear(int[][] grid)
 	{
@@ -149,33 +136,5 @@ public abstract class Piece
 		}
 		return true;
 	}
-	//this rightClear checks only for blocks, used for rotation.
-	public boolean rightClear()
-	{
-		for(Block b : blocks)
-		{
-			if(grid[b.getX() + 1][b.getY()] != 0 || grid[b.getX() + 2][b.getY()] != 0)
-				return false;
-		}
-		return true;
-	}
-
-	//used for rotating the pieces
-//	public void rotate()
-//	{
-//		//find out which type the piece is and call that specific rotate statement
-//		if(type == 0)
-//			rotateLine();
-//		else if(type == 2)
-//			rotateRightArm();
-//		else if(type == 3)
-//			rotateLeftArm();
-//		else if(type == 4)
-//			rotateTPiece();
-//		else if(type == 5)
-//			rotateRightL();
-//		else if(type == 6)
-//			rotateLeftL();
-//	}
 
 }

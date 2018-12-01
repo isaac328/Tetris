@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Square extends Piece {
 
-	public Square(PApplet p){
+	public Square(PApplet p) throws Exception{
 		super(p);
 		ArrayList<Block> blocks = getBlocks();
 		blocks.add(new Block(p, 4, 0));

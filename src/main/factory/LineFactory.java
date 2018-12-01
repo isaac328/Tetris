@@ -6,7 +6,7 @@ import processing.core.PApplet;
 
 public class LineFactory extends PieceFactory {
 	@Override
-	public Piece makePiece(PApplet p) {
+	public Piece makePiece(PApplet p) throws Exception{
 		return new Line(p);
 	}
 }
