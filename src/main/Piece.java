@@ -23,7 +23,7 @@ public abstract class Piece
 
 	public ArrayList<Block> getBlocks(){ return this.blocks; }
 
-	public int[][] getGrid(){ return ((Game)p).getGrid(); }
+	public int[][] getGrid(){ return ((Game)p).getController().getGrid(); }
 	
 	public void show()
 	{
