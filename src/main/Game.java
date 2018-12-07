@@ -38,6 +38,10 @@ public class Game extends PApplet
 	{
 		//set background to black
 		background(0);
+
+		fill(255);
+		textSize(35);
+		text(String.format("Score: %d", controller.getScore()), 300, 60);
 		//draw all the peices
 		for(Piece p : controller.getPieces())
 		{
@@ -47,7 +51,7 @@ public class Game extends PApplet
 		if(paused == false)
 		{
 			try{
-				controller.moveDown(50);
+				controller.moveBlockDown(50);
 			}
 			catch (Exception ex){ System.out.println(ex.getMessage());}
 		}
@@ -58,7 +62,7 @@ public class Game extends PApplet
 	public void keyPressed()
 	{
 		//send all keys except for p to the individual piece
-		controller.getPieces().get(0).checkMove(controller.getGrid());
+		controller.processInput();
 		//if it is p, toggle paused
 		if(key == 'p')
 		{

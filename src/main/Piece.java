@@ -42,97 +42,14 @@ public abstract class Piece
 	}
 	
 	//checks if the current block is above another block or on the bottom
-	public boolean check(int[][] grid)
+	public boolean checkClearBelow()
 	{
 		for(Block b : blocks)
 		{
-			if(b.getY() >= p.height/50 - 1 || grid[b.getX()][b.getY()+1] != 0)
+			if(b.getY() >= p.height/50 - 1 || getGrid()[b.getX()][b.getY()+1] != 0)
 			{
 				return false;
 			}
-		}
-		return true;
-	}
-	
-	//method that marks the locations of all the blocks on the grid
-	public int[][] updateGrid(int[][] grid)
-	{
-		for(Block b : blocks)
-		{
-			grid[b.getX()][b.getY()	] = 1;
-		}
-		return grid;
-	}
-	
-	//this method is used for controls (left right etc).
-	public void checkMove(int[][] grid) 
-	{
-		//if a key is pressed
-		if(p.keyPressed)
-		{	
-			//if the key is a and the left side of the piece is clear
-			if(p.key == 'a' && leftClear(grid))
-			{
-				//move all the blocks to the left one
-				for(Block b : blocks)
-					b.setX(b.getX() - 1);
-			}
-			//if the player wants to move right and the right side is clear
-			else if(p.key == 'd' && rightClear(grid))
-			{
-				//move all the blocks right one
-				for(Block b : blocks)
-					b.setX(b.getX() + 1);
-			}
-			//if they press s and want to go down
-			else if(p.key == 's')
-			{
-				//move all the blocks down one
-				for(Block b : blocks)
-				{
-					b.setY(b.getY() + 1);
-				}
-			}
-			//if they press w
-			else if(p.key == 'w')
-			{
-				//rotate the piece
-				rotate();
-			}
-			//if the game is launched from console, pressing g will display the grid system
-			else if(p.key == 'g')
-			{
-				for(int y = 0; y < p.height/50; y++)
-				{
-					for(int x = 0; x < p.width/50; x++)
-					{
-						System.out.print(grid[x][y]);
-					}
-					System.out.println();
-				}
-				System.out.println();
-			}
-		}	
-	}
-	
-	//this leftClear checks for walls and other blocks, used for moving left
-	public boolean leftClear(int[][] grid)
-	{
-		for(Block b : blocks)
-		{
-			if(b.getX() <= 0 || grid[b.getX() - 1][b.getY()] != 0)
-				return false;
-		}
-		return true;
-	}
-
-	//this RightClear checks for blocks and walls, used for moving right
-	public boolean rightClear(int[][] grid)
-	{
-		for(Block b : blocks)
-		{
-			if(b.getX() + 1 >= p.width/50 || grid[b.getX() + 1][b.getY()] != 0)
-				return false;
 		}
 		return true;
 	}
