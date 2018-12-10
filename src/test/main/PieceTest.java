@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 * Piece Tester. 
 * 
 * @author <Authors name> 
-* @since <pre>Dec 1, 2018</pre> 
+* @since <pre>Dec 6, 2018</pre> 
 * @version 1.0 
 */ 
 public class PieceTest { 
@@ -24,8 +24,7 @@ public void before() throws Exception {
 
 @After
 public void after() throws Exception { 
-} 
-
+}
 
 /** 
 * 
@@ -59,59 +58,30 @@ public void testGetBlocks() throws Exception {
 * 
 */ 
 @Test
-public void testGetGrid() throws Exception { 
-//TODO: Test goes here... 
+public void testGetGrid() throws Exception {
+	Game game = new Game();
+	Square square = new Square(game);
+
+	assertSame(game.getController().getGrid(), square.getGrid());
 } 
 
 
 /** 
 * 
-* Method: check(int[][] grid) 
+* Method: checkClearBelow() 
 * 
 */ 
 @Test
-public void testCheck() throws Exception { 
-//TODO: Test goes here... 
-} 
+public void testCheckClearBelow() throws Exception { 
+	Game game = new Game();
+	Square square = new Square(game);
 
-/** 
-* 
-* Method: updateGrid(int[][] grid) 
-* 
-*/ 
-@Test
-public void testUpdateGrid() throws Exception { 
-//TODO: Test goes here... 
-} 
+	//assertTrue(square.checkClearBelow());
 
-/** 
-* 
-* Method: checkMove(int[][] grid) 
-* 
-*/ 
-@Test
-public void testCheckMove() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: leftClear(int[][] grid) 
-* 
-*/ 
-@Test
-public void testLeftClear() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: rightClear(int[][] grid) 
-* 
-*/ 
-@Test
-public void testRightClear() throws Exception { 
-//TODO: Test goes here... 
+//	for(int i = 0; i < 8; i++)
+//		game.getController().moveBlockDown(1);
+//
+//	assertTrue(square.checkClearBelow());
 } 
 
 

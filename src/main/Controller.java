@@ -244,6 +244,8 @@ public class Controller {
 
 	public int[][] getGrid(){ return this.grid; }
 
+	public void setGrid(int[][] grid){ this.grid = grid; }
+
 
 	public int getScore(){
 		return score;

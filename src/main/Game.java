@@ -41,7 +41,7 @@ public class Game extends PApplet
 
 		fill(255);
 		textSize(35);
-		text(String.format("Score: %d", controller.getScore()), 300, 60);
+		text(String.format("Score: %d", controller.getScore()), 250, 60);
 		//draw all the peices
 		for(Piece p : controller.getPieces())
 		{
