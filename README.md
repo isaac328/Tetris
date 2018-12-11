@@ -12,14 +12,14 @@ jogl-all.jar
 
 All three of these jars are located in the core/library/ directory of the download
 
-#Overview
+# Overview
 The center of the functionality for the game is the Game class, which inherits from PApplet. PApplet is the Processing 
 application that handles drawing objects, input, etc. The Game class overrides a few of these methods, specifically settings, which
 sets the initial settings for the game, setup, which runs once before the game starts, and draw, which runs every frame. All the 
 pieces are implemented in their own classes and inherit from a base Piece class. Factory classes are implemented to create new
 pieces. There are a few enumns to keep track of the different possible rotational positions for each piece. 
 
-#Changes
+# Changes
 I changed pretty much the entire design of this program. Originally, the entire program was built into 3 classes: Game, Block, 
 and Piece. There was a lot of code duplication and shared resources amongst these three classes. I started by first making
 each specific piece its own class, which inherit from a base Piece class. Each of these classes implement a few abstract methods,
