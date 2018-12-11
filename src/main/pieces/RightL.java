@@ -13,10 +13,10 @@ public class RightL extends Piece {
 	public RightL(PApplet p) throws Exception{
 		super(p);
 		ArrayList<Block> blocks = getBlocks();
-		blocks.add(new Block(p, 5, 0));
 		blocks.add(new Block(p, 5, 1));
 		blocks.add(new Block(p, 5, 2));
-		blocks.add(new Block(p, 4, 2));
+		blocks.add(new Block(p, 5, 3));
+		blocks.add(new Block(p, 4, 3));
 		position = LPosition.POINTING_UP;
 	}
 
